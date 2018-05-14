@@ -2,9 +2,8 @@
   "name": "ernest-server",
   "version": "1.0.0",
   "description": "simple nodejs http server to serve static file",
-  "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,7 +12,11 @@
   ],
   "author": "Ernest Senopratomo",
   "license": "ISC",
+  "preferGlobal": true,
   "dependencies": {
-    "mime":"~1.3.4"
+    "mime": "~1.3.4"
+  },
+  "bin": {
+    "run-ernest-server": "index.js"
   }
 }

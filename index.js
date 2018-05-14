@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * Created by Ernest on 1/24/2016.
  */
@@ -6,12 +8,14 @@ var http = require("http"),
     path = require("path"),
     fs = require("fs"),
     mime = require("mime"),
-    port = process.argv[2] || 8888;
+    port = process.argv[2] || 8888,
+    dirPath = process.argv[3] || process.cwd();
+
 
 http.createServer(function(request, response) {
 
     var uri = url.parse(request.url).pathname
-        , filename = path.join(process.cwd(), uri);
+        , filename = path.join(dirPath, uri);
 
     fs.exists(filename, function(exists) {
         if(!exists) {
@@ -38,4 +42,6 @@ http.createServer(function(request, response) {
     });
 }).listen(parseInt(port, 10));
 
-console.log("Ernest server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+console.log("Ernest server running at\n  => http://localhost:" + port + " " +
+    "for "+ dirPath + " "+
+    "/\nCTRL + C to shutdown");
