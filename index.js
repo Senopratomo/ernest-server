@@ -3,7 +3,7 @@
 /**
  * Created by Ernest on 1/24/2016.
  */
-var http = require("http"),
+const http = require("http"),
     url = require("url"),
     path = require("path"),
     fs = require("fs"),
@@ -35,7 +35,7 @@ http.createServer(function(request, response) {
                 return;
             }
 
-            response.writeHead(200,  {"Content-Type": mime.lookup(filename)});
+            response.writeHead(200,  {"Content-Type": mime.getType(filename)});
             response.write(file, "binary");
             response.end();
         });
